@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Customopion_Attribute>
+      <version>0.1.0</version>
+    </Customopion_Attribute>
+  </modules>
+
+  <global>
+    
+    <helpers>
+      <attribute>
+        <class>Customopion_Attribute_Helper</class>
+      </attribute>
+    </helpers>
+
+    <resources>
+     <customopion_attribute_setup>
+      <setup>
+        <module>Customopion_Attribute</module>
+      </setup>
+      <connection>
+        <use>core_setup</use>
+      </connection>
+    </customopion_attribute_setup>
+
+    <customopion_attribute_write>
+      <connection>
+        <use>core_write</use>
+      </connection>
+    </customopion_attribute_write>
+
+    <customopion_attribute_read>
+      <connection>
+        <use>core_read</use>
+      </connection>
+    </customopion_attribute_read>
+  </resources>
+
+  <blocks>
+    <adminhtml>
+      <rewrite>
+        <!-- Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Options_Type_Select -->
+        <catalog_product_edit_tab_options_type_select>Customopion_Attribute_Block_Adminhtml_Catalog_Product_Edit_Select</catalog_product_edit_tab_options_type_select>
+
+        <!-- Mage_Adminhtml_Block_Catalog_Product_Edit_Tab_Options_Option -->
+        <catalog_product_edit_tab_options_option>Customopion_Attribute_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
+
+      </rewrite>
+    </adminhtml>
+  </blocks>
+
+  <events>
+    <sales_quote_item_set_product>
+      <observers>
+        <attribute>
+          <type>model</type>
+          <class>Customopion_Attribute_Model_Observer</class>
+          <method>addtoCart</method>
+        </attribute>
+      </observers>
+    </sales_quote_item_set_product>         
+  </events>
+</global>
+</config> 
