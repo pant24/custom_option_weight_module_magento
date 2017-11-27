@@ -1,0 +1,1 @@
+# custom_option_weight_module_magento
